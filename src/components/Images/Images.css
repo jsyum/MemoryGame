@@ -1,0 +1,10 @@
+/* .galleryImg {
+  padding: 10px;
+} */
+
+img {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
