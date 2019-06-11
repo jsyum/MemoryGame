@@ -8,3 +8,7 @@ img {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+img:hover {
+  transform: scale(1.03);
+}
