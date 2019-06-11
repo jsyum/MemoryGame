@@ -2,4 +2,4 @@
 
 <a href="https://jsyum.github.io/memorygame/" target="_blank">Link to the deployed app</a>
 
-![ClickyGame Demo](/img/clickyPreview.png "game preview")
+![ClickyGame Demo](/public/img/clickyPreview.png "game preview")
