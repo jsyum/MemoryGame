@@ -1,8 +1,12 @@
 import React, { Component } from "react";
+import Paintings from "./Paintings";
+import Header from "../Header/Header";
 import "./Images.css";
 
-class App extends Component {
+class Images extends Component {
   state = {
+    score: 0,
+    topScore: 0,
     paintings: [
       {
         id: 1,
@@ -61,24 +65,37 @@ class App extends Component {
     ]
   };
 
-  renderImg() {
+  changeClickedState = id => {
+    this.state.paintings.map(painting => {
+      if (painting.id === id && painting.clicked === false) {
+        painting.clicked = true;
+        this.setState({ score: this.state.score + 1 });
+        if (this.state.score >= this.state.topScore) {
+          this.setState({
+            topScore: this.state.score + 1
+          });
+        }
+      } else if (painting.id === id && painting.clicked === true) {
+        this.setState({ score: 0 });
+        this.state.paintings.map(painting => {
+          painting.clicked = false;
+          return painting;
+        });
+      }
+      return painting;
+    });
+  };
+
+  render() {
     return (
       <div>
-        {this.state.paintings.map(source => (
-          <img
-            width="200px"
-            height="200px"
-            src={source.src}
-            key={source.id}
-            alt={source.name}
-          />
-        ))}
+        <Header score={this.state.score} topScore={this.state.topScore} />
+        <Paintings
+          paintings={this.state.paintings}
+          changeClickedState={this.changeClickedState}
+        />
       </div>
     );
   }
-
-  render() {
-    return <div>{this.renderImg()}</div>;
-  }
 }
-export default App;
+export default Images;
